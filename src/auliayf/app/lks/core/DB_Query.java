@@ -102,6 +102,7 @@ public class DB_Query {
                 first = false;
             }
         }
+        
         return builder.toString();
     }
 }

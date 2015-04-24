@@ -5,7 +5,14 @@
  */
 package auliayf.app.lks;
 
+import auliayf.app.lks.core.DB;
 import auliayf.app.lks.core.DB_Query;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,13 +21,13 @@ import auliayf.app.lks.core.DB_Query;
 public class Main {
 
     public static void main(String[] args) {
-        DB_Query query = new DB_Query("user");
-        query.select("nama", "level.level");
-        query.join("level", "level.id = user.level", "");
-        query.where("OR", "user.id = 3");
-        query.where("AND", "user.id = 4");
-        query.like("OR", "user", "%A");
-        query.like("AND", "user", "A%");
-        System.out.println(query.toString());
+        try {
+            Connection conn = DB.getInstance();
+            Statement state = conn.createStatement();
+            ResultSet rs = state.executeQuery(new DB_Query("x").toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
     }
 }

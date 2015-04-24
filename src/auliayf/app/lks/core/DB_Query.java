@@ -62,7 +62,9 @@ public class DB_Query {
                 first = false;
             }
 
-            builder.append(" FROM ").append(mTable);
+            builder.append(" FROM ").append(this.mTable);
+        }else{
+            builder.append("SELECT * FROM ").append(this.mTable);
         }
 
         if (this.mJoins.size() > 0) {

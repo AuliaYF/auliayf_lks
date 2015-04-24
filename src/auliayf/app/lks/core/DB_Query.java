@@ -85,15 +85,15 @@ public class DB_Query {
                 first = false;
             }
         }
-        
+
         if (this.mLikes.size() > 0) {
             builder.append(" ");
             boolean first = true;
             for (String[] like : this.mLikes) {
                 if (!first) {
                     builder.append(" ").append(like[0]).append(" ");
-                }else{
-                    if(this.mWheres.size() > 0){
+                } else {
+                    if (this.mWheres.size() > 0) {
                         builder.append(like[0]).append(" ");
                     }
                 }
